@@ -8,5 +8,9 @@ public class HelloWorld {
 			System.out.println("소스 수정 중");		
 
 		}
+		
+		public void method2() {
+			System.out.println("안녕하세요!");
+		} //김민지
 	
 }
