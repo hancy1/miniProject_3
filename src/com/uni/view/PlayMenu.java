@@ -1,11 +1,8 @@
 package com.uni.view;
 
-import java.util.Scanner;
-
 public class PlayMenu {
 
-	Scanner sc = new Scanner(System.in);
-	
+
 	public PlayMenu() {
 		// TODO Auto-generated constructor stub
 	}
