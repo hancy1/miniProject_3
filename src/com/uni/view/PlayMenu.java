@@ -2,16 +2,18 @@ package com.uni.view;
 
 import java.util.Scanner;
 
+import com.uni.model.vo.Admin;
+
 public class PlayMenu {
 
 	Scanner sc = new Scanner(System.in);
-	
+
 	public PlayMenu() {
 		// TODO Auto-generated constructor stub
 	}
 
 	public void mainmenu() {
-		while(true) {
+		while (true) {
 			System.out.println("*** Hello Java World! ***");
 			System.out.println("1. 이용권예매");
 			System.out.println("2. 놀이기구 이용");
@@ -24,25 +26,27 @@ public class PlayMenu {
 			int menu = sc.nextInt();
 			sc.nextLine();
 
-			switch(menu) {
-			case 1 : 
-			break;
-			case 2 : 
-			break;
-			case 3 : 
-			break;
-			case 4 : 
-			break;
-			case 5 : 
-			break;
-			case 6 : 
-			break;
-			case 0 : System.out.println("프로그램 종료");
-			return;
-			default : System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
-			break;
-
+			switch (menu) {
+			case 1:
+				break;
+			case 2:
+				break;
+			case 3:
+				break;
+			case 4:
+				break;
+			case 5:
+				break;
+			case 6:
+				break;
+			case 0:
+				System.out.println("프로그램 종료");
+				return;
+			default:
+				System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
+				break;
 			}
 		}
 	}
+
 }
