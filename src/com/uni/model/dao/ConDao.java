@@ -1,8 +1,10 @@
-package com.convenience.user.model.dao;
+package com.uni.model.dao;
 
 import java.util.ArrayList;
 
-import com.convenience.user.model.vo.Convenience;
+import com.uni.model.vo.Convenience;
+
+
 
 
 public class ConDao {
@@ -12,8 +14,8 @@ public class ConDao {
 	ArrayList<Convenience> list = new ArrayList<>();
 	
 	{//실행되는지 확인하려고 임의로 객체 만듦
-		list.add(new Convenience(1, 1, 'A', "바이킹 옆"));
-		list.add(new Convenience(2, 2, 'B', "회전목마 오른쪽"));
+		list.add(new Convenience(1, "안내데스크", 'A', "바이킹 옆"));
+		list.add(new Convenience(2, "화장실", 'B', "회전목마 오른쪽"));
 	}
 	
 	
@@ -28,15 +30,17 @@ public class ConDao {
 	
 	//전달 받은 편의시설 번호가(1이나 2) 적절하면
 	//1 아니면 0 리턴
-	public int searchCon(int con) {
+	public String searchCon(int con) {
 		
-		//1이나 2가 아니면 0으로 리턴
-		if(con != 1 && con != 2) {
-			return 0;
+		//번호가 1이면 안내데스크 2이면 화장실 리턴
+		if(con == 1) {
+			return "안내데스크";
+		} else if(con == 2) {
+			return "화장실";
 		}
-		
-		//1이나 2이면 해당 편의시설 리턴
-		return con;
+	
+		//둘 다 아니면 null 리턴
+		return null;
 	}
 
 	
@@ -44,8 +48,14 @@ public class ConDao {
 	//전달 받은 구역이(A,B,C,D) 적절하면
 	//searchCon에서 리턴 받은 것과 전달 받은 구역을 리트스와 비교
 	//둘 다 일치하는 객체가 있으면 출력 아니면 0리턴
-	public int searchArea(char area) {
+	public char searchArea(int con, char area) {
 		
+		for(int i = 0; i < list.size(); i++) {
+			
+			if(searchCon(con) == list.get(i).getCon() &&) {
+				
+			}
+		}
 		
 		
 	}

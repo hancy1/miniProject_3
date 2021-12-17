@@ -1,12 +1,16 @@
 package com.uni.run;
 
-import com.uni.first.HelloWorld;
+
+import com.uni.view.PlayMenu;
 
 public class RunA {
 
 	public static void main(String[] args) {
-		HelloWorld a = new HelloWorld();
-		a.method1();
+		
+		PlayMenu pm = new PlayMenu();
+		pm.mainMenu();
+		
+		
 	}
 
 }

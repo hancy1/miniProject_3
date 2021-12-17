@@ -1,12 +1,13 @@
-package com.convenience.user.controller;
+package com.uni.controller;
 
 import java.util.ArrayList;
 import java.util.Scanner;
 
-import com.convenience.user.model.dao.ConDao;
-import com.convenience.user.model.vo.Convenience;
-import com.convenient.user.model.dao.Dao;
-import com.convenient.user.model.vo.Convenient;
+import com.uni.model.dao.ConDao;
+import com.uni.model.vo.Convenience;
+
+
+
 
 public class ConManager {
 	
@@ -23,13 +24,14 @@ public class ConManager {
 	Scanner sc = new Scanner(System.in);
 	
 	//Manager 객체 생성
-	ConDao d = new ConDao();
+	ConDao cd = new ConDao();
 	
 	
 	
 	
 	
 	//메뉴에서 3.편의시설 안내 넘어와서
+	//편의시설이랑 구역 한 번에 받아서 일치하는 거 있으면 출력하는 걸로 바꿀까 ..?
 	public void conInfo() {
 		
 		while(true) {
@@ -39,10 +41,10 @@ public class ConManager {
 			sc.nextLine();
 			
 			//Manager로 con 전달
-			d.searchCon(con);
+			cd.searchCon(con);
 			
-			//리턴 받은 결과가 0이면 다시 입력받도록
-			if(d.searchCon(con) == 0) {
+			//리턴 받은 결과가 null이면 다시 입력받도록
+			if(cd.searchCon(con) == null) {
 				System.out.println("해당하는 편의시설이 없습니다. 다시 입력해주세요.");
 				continue;
 			}
@@ -53,15 +55,15 @@ public class ConManager {
 				char area = sc.nextLine().charAt(0);
 				
 				//Manager로 area 전달하고 list로 결과 전달 받음
-				d.searchArea(area);
+				cd.searchArea(con, area);
 				
 				//리턴 받은 결과가 0이면 다시 입력받도록
-				if(d.searchArea(area) == 0) {
+				if(cd.searchArea(con, area) == 0) {
 					System.out.println("해당하는 구역이 없습니다. 다시 입력해주세요.");
 					continue;
 					
 				//2이면 (해당 구역에 찾는 편의시설이 없는 경우)
-				} else if(d.searchArea(area) == 0) {
+				} else if(cd.searchArea(con, area) == 2) {
 					System.out.println(area + "구역에는 " + con + "가 없습니다. 가까운 구역을 다시 입력하세요.");
 				
 				//1이면 해당 list로 안내메시지 출력
