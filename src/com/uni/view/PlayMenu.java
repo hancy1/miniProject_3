@@ -2,14 +2,17 @@ package com.uni.view;
 
 import java.util.Scanner;
 
+
 import com.uni.controller.ConManager;
 import com.uni.controller.WorldController;
-
+import com.uni.model.vo.Admin;
 
 
 public class PlayMenu {
 	
-	//기본생성자
+	Scanner sc = new Scanner(System.in);
+
+
 	public PlayMenu() {
 		// TODO Auto-generated constructor stub
 	}
@@ -27,8 +30,11 @@ public class PlayMenu {
 	
 	
 
+
 	public void mainMenu() {
 		while(true) {
+
+	
 			System.out.println("*** Hello Java World! ***");
 			System.out.println("1. 이용권 예매");
 			System.out.println("2. 놀이기구 이용");
@@ -40,6 +46,7 @@ public class PlayMenu {
 			System.out.println("메뉴 번호 선택 : ");
 			int menu = sc.nextInt();
 			sc.nextLine();
+
 
 			switch(menu) {
 			case 1 : break;
@@ -112,3 +119,4 @@ public class PlayMenu {
 	}
 	
 }
+
