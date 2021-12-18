@@ -1,72 +1,117 @@
 package com.uni.model.dao;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.regex.Pattern;
 
-import com.uni.reviews.Review;
+import com.uni.model.vo.Review;
 
 public class ReviewDao {
 
-	private ArrayList<Review> list = new ArrayList<>();
-	
+	ArrayList<Review> reviewList = new ArrayList<Review>();
+	ArrayList<Review> reviewAdminList = new ArrayList<Review>();
+	// vo클래스 자료형을 임시로 저장할 컬렉션(ArrayList)
+
 	public ReviewDao() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	public static int checkPwd(String pwd) {
-		
-		if (Pattern.compile("[0~9]") != null && pwd.length() == 4) {
-			return 1;
-		}else {
-			return 0;}
-		
-	}
-	
-	public int getLastReviewNo() { // list 크기 -1 이 마지막번호
-		Review r = list.get(list.size()-1);
-		return r.getrNo();		
-	}
-	
-	public void writeReview(Review review) { // 전달받은 review를 list에 저장
-		list.add(review);
-		
-	}
-
-	public Review displayReview(int rNo) {
-		for(Review r : list) {
-			if(r.getrNo() == rNo)
-				return r;
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Review.txt")))
+		{
+			reviewList.addAll((ArrayList<Review>)ois.readObject()); //addAll메소드를 이용해 reviewList 통으로 추가, 파일에 있는 객체들을 reviewList에 다 담는다.
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();			
+		} catch (FileNotFoundException e) {
+			System.out.println("등록된 글이 없습니다.");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return null;
 	}
 
-	public void editContent(int rNo, String content) { // 전달받은 글번호와 내용을
-		for(Review r : list) {
-			if( rNo == r.getrNo()) { // 글번호가 같다면
-				r.setContent(content); // 내용 더해주기
+
+	public int getLastReviewNo() { // 글번호 얻어오기
+
+		return reviewList.get(reviewList.size()-1).getReviewNo();
+	}
+
+
+	public void writeReview(Review review) { // 글등록
+
+		reviewList.add(review);
+
+	}
+
+
+	public ArrayList<Review> readAllReview() {
+
+		return reviewList;
+	}
+
+
+	public Review readReview(int reviewNo) { // 글번호 수정할때 조회해서 불러오기
+
+		Review review = null;
+
+		for(int i = 0; i < reviewList.size(); i++) {
+			if(reviewList.get(i).getReviewNo() == reviewNo) {
+				review = reviewList.get(i);
+				break;
 			}
 		}
-		
+
+		return review;
 	}
 
-	public void deleteContent(int rNo) {
-		
-		Iterator it = list.iterator();
-		
-		while(it.hasNext()) {
-			Review r = (Review) it.next(); // r에 list의 객체들을 담고
-			if(r.getrNo() == rNo) { // 전달받은 번호와 같다면
-				it.remove(); // 삭제시킨다.
+
+	public void editReview(int reviewNo, String reviewContent) { // 3. 글수정
+
+		for(int i = 0; i < reviewList.size(); i++) {
+			if(reviewList.get(i).getReviewNo() == reviewNo) {
+				reviewList.get(i).setReviewContent(reviewContent);
+				break;
 			}
+		}
+
+	}
+
+
+	public void deleteReview(int reviewNo) { // 4. 글 삭제
+
+
+		for(int i = 0; i < reviewList.size(); i++) {
+			if(reviewList.get(i).getReviewNo() == reviewNo) {
+				reviewList.remove(i);
+				break;
+			}
+
+		}
+
+	}
+
+
+	public void saveListFile() { // txt에 저장
+		
+		try(ObjectOutputStream oos = new ObjectOutputStream
+				(new FileOutputStream("Review.txt"))){
+			System.out.println(reviewList);
+			oos.writeObject(reviewList);
+						
+			System.out.println("Review.txt에 성공적으로 저장되었습니다.");
+			
+		}catch(FileNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.");
+		}catch(IOException e) {
+			e.printStackTrace();
 		}
 		
 	}
-	
-	
-	
-	public ArrayList<Review> displayAllList() {
-		ArrayList<Review> clone = (ArrayList<Review>) list.clone();
-		return clone;
+
+
+	public void writeAdminReview(Review review) {
+		
+		reviewAdminList.add(review);
 	}
 }
