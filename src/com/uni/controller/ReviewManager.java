@@ -1,176 +1,126 @@
 package com.uni.controller;
 
-
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Scanner;
 
 import com.uni.model.dao.ReviewDao;
-import com.uni.reviews.Review;
+import com.uni.model.vo.Review;
 
 public class ReviewManager {
-
+	
 	Scanner sc = new Scanner(System.in);
-	ArrayList<Review> list = new ArrayList<Review>();
 	ReviewDao rd = new ReviewDao();
-
-	public ReviewManager() { // 기본생성자
+	
+	public ReviewManager() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public void readReview() { // 후기조회
-		BufferedReader br = null;
-		String s = null;
-		int count = 0;
-		
-		ArrayList<Review> list = rd.displayAllList(); // BoardDao의 displayAllList() 메소드를 호출하여 ArrayList를 전달받음
-
-		Iterator it = list.iterator(); // Iterator를 이용하여 list 에 기록된 정보를 모두 화면에 출력시킴
-		while(it.hasNext()) {
-			System.out.println(it.next()); // 글번호표기실패.....
-		}
-		
-		try {
-			for(int i = 0; i < list.size(); i++) {
-				count = i;
-			}
-			br = new BufferedReader(new FileReader( count + ".txt"));
-			try {
-				while((s = br.readLine()) != null) {
-					System.out.println(s);
-				}
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}catch(FileNotFoundException e) {
-			e.printStackTrace();
-			System.out.println("등록된 이용후기가 없습니다.");
-		}finally{
-			try {
-				br.close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		}
-		
-		
-	}
-
-
-	public void writeReview() { //후기등록
-
-		StringBuilder sb = new StringBuilder(); // String 연산을 위해 쓴 메소드
-
-
-		System.out.println("예매번호 입력 : ");
+	public void writeReview() { // 2. 등록
+		System.out.println("<이용후기 등록>");
+		System.out.println("예매번호 입력 (예매완료자만 후기등록 가능) : ");
 		int tNum = sc.nextInt();
-		sc.nextLine();
-
-		/*
-		 * if(민호님티켓넘버와 비교)
-		 * */
-
-
-		System.out.println("이용후기를 등록해주세요 (\"exit\" 을 입력하면 내용 입력 끝) : ");
-
-		while(true) { // 반복문으로 내용입력 받기
-
-			String content = sc.nextLine();
-
-			if(content.equalsIgnoreCase("exit")) {break;} // exit 를 입력하면 끝.
-			else {sb.append(content + "\n");} // 내용 + 내용
-
-		}
-
-		System.out.println("저장하시겠습니까? (Y/N)");
-		String save = sc.nextLine();
-
-
-		if(save.equalsIgnoreCase("Y")) { // 대문자소문자 구분없이 y면 저장
-			System.out.println("수정/삭제 시 필요한 글의 비밀번호를 입력해주세요 (숫자4자리) : ");
-			String pwd = sc.nextLine(); // 비밀번호 입력받기
-
-			if(rd.checkPwd(pwd) == 0) { // rd.checkPwd로 보내서 비밀번호 조건 체크, 비밀번호는 슛자 4자리여야 하므로 
-				System.out.println("숫자 4자리를 입력해주세요. 이용후기 메뉴로 돌아갑니다.");
-				return;
-			}
-
-
-		}
-
-
-		int rNo = 0; // 글번호 초기화선언
-		BufferedWriter bw = null;// 변수 밖에서 초기화
-		int count = 0;
-		try {			
-			for(int i = 0; i < bw.toString().length(); i++) {
-				count = i;
-			}
+		//예몌번호 체크 메소드 만들기
+		//if(메소드전달받음)
+		sc.nextLine(); // 버퍼없애주기
+		
+		System.out.println("제목 : ");
+		String reviewTitle = sc.nextLine();
+		
+		Date today = new Date();
+		Date reviewDate = today;
+		
+		System.out.println("수정/삭제를 위한 비밀번호 (숫자4자리): ");
+		String pwd = sc.nextLine();
+		//비밀번호 check 메소드만들기!
+		
+		
+		System.out.println("내용입력 (exit 입력시 내용입력 종료) : ");
+		StringBuilder sb = new StringBuilder();
+		while(true) { 
 			
-			bw = new BufferedWriter(new FileWriter( count + ".txt"));
-			bw.write(sb.toString());
-			rNo = count;
-
-		}catch (IOException e) {
-			e.printStackTrace();
-		}catch(IndexOutOfBoundsException e) { // 등록된 글이 없다면
-			rNo = 0;
-		}finally {
+			String reviewContent = sc.nextLine();
 			
+			if(reviewContent.equalsIgnoreCase("exit")) {
+				break;
+			}else {
+				sb.append(reviewContent + "\n"); // 줄바꾸기를 적용하며 저장.
+			}
+		}
+			int reviewNo = 0;
 			try {
-			rd.writeReview(new Review(rNo+1, sb.toString())); // 글번호와 내용을 rd의 writeReview로 보내 list에 저장
-			System.out.println("글번호 No." + rNo + "에 등록되었습니다."); // 왜 자꾸 0으로 출력되는건지......
-				bw.close(); // 열었던 BufferedWriter 닫아주기
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+				reviewNo = rd.getLastReviewNo();
+			}catch(IndexOutOfBoundsException e) { // 인덱스에 아무것도 없을 경우?
+				reviewNo = 0;
+			}finally {
+				rd.writeAdminReview(new Review(reviewNo+1, reviewTitle, reviewDate, sb.toString(), pwd)); // 관리자용
+				rd.writeReview(new Review(reviewNo+1, reviewTitle, reviewDate, sb.toString())); // 사용자용
+				System.out.println("게시글이 등록되었습니다.");
 			}
+			rd.saveListFile();
+		}
+		
+		
+	
+
+	public void readReview() { // 1. 후기조회
+		
+		ArrayList<Review> reviewList = rd.readAllReview();
+		
+		Iterator<Review> it = reviewList.iterator();
+		while(it.hasNext()) {
+			System.out.println(it.next()+"\n");
 		}
 	}
 
-
-	public void editReview() { //후기수정
-		System.out.println("수정할 글번호 : ");
-		int rNo = sc.nextInt();
+	public void editReview() { // 3. 후기수정
+		System.out.println("수정할 글 번호 : ");
+		int reviewNo = sc.nextInt();
 		sc.nextLine();
-
-		Review r = rd.displayReview(rNo); // 글번호와 똑같은 글 불러오기
+		
+		Review r = rd.readReview(reviewNo);
+		
 		if(r == null) {
-			System.out.println("조회된 글이 존재하지 않습니다.");
-		}else {System.out.println(r);} // 글 출력
-
-		System.out.println("변경할 내용 : ");
-		String content = sc.nextLine();
-
-		rd.editContent(rNo, content);
-	}
-
-	public void deleteReview() { //후기삭제
-
-		System.out.println("삭제할 글번호 : ");
-		int rNo = sc.nextInt();
-		sc.nextLine();
-
-		Review r = rd.displayReview(rNo);
-		if(r == null) {
-			System.out.println("조회된 글이 존재하지 않습니다.");
+			System.out.println("입력한 글 번호의 후기가 없습니다.");
 		}else {
-			System.out.println("정말 삭제하시겠습니까? (Y/N)");
-			String delete = sc.nextLine();
-
-			if(delete.equalsIgnoreCase("Y")) {
-				rd.deleteContent(rNo);
-				System.out.println("삭제가 완료되었습니다.");
-			}
+			System.out.println(r);
 		}
-
+		
+		System.out.println("비밀번호 입력 (숫자4자리) : ");
+		String pwd = sc.nextLine();
+		// 패스워드가 맞는지 체크 메소드만들기
+		
+		System.out.println("수정할 내용 입력 : ");
+		String reviewContent = sc.nextLine();
+		rd.editReview(reviewNo, reviewContent);
+		
+		rd.saveListFile();
+		
 	}
+
+	public void deleteReview() { // 4. 글 삭제하기
+		System.out.println("삭제할 글 번호 : ");
+		int reviewNo = sc.nextInt();
+		sc.nextLine();
+		
+		Review r = rd.readReview(reviewNo);
+		
+		if(r == null) {
+			System.out.println("입력한 글 번호의 후기가 없습니다.");
+		}else {
+			System.out.println(r);
+		}
+		
+		System.out.println("비밀번호 입력 (숫자4자리) : ");
+		String pwd = sc.nextLine();
+		// 패스워드가 맞는지 체크 메소드만들기
+		
+		rd.deleteReview(reviewNo);
+		System.out.println("삭제가 완료되었습니다.");
+		
+		rd.saveListFile();
+	}
+
+	
 }

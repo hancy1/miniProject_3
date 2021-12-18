@@ -13,7 +13,7 @@ public class ReviewMenu {
 		// TODO Auto-generated constructor stub
 	}
 	
-	public void Rmenu() {
+	public void mainMenu() {
 		while(true) {
 			System.out.println("*** 자바월드 이용 후기 ***");
 			System.out.println("1. 이용후기 조회");
