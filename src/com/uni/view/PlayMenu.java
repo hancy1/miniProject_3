@@ -2,7 +2,6 @@ package com.uni.view;
 
 import java.util.Scanner;
 
-
 import com.uni.controller.ConManager;
 import com.uni.controller.WorldController;
 
@@ -23,6 +22,7 @@ public class PlayMenu {
 	//편의시설 필요한 부분 객체 생성
 	ConManager cm = new ConManager();
 	ConMenu cMenu = new ConMenu();
+	ReviewMenu rm = new ReviewMenu();
 	
 	
 	
@@ -49,7 +49,8 @@ public class PlayMenu {
 			case 1 : break;
 			case 2 : break;
 			case 3 : cm.conInfo(); break;
-			case 4 : break;
+			case 4 : ReviewMenu rm = new ReviewMenu();
+			 rm.mainMenu();
 			case 5 : break;
 			case 6 : managerMenu(); break;
 			case 0 : System.out.println("프로그램 종료");return;
@@ -87,7 +88,7 @@ public class PlayMenu {
 			System.out.println("1. 셔틀버스 시간표 관리");
 			System.out.println("2. 놀이기구 이용제한 관리");
 			System.out.println("3. 편의시설 관리");
-			System.out.println("4. 이용 후기 조회");
+			System.out.println("4. 이용 후기 관리");
 			System.out.println("9. 이전 메뉴");
 			System.out.println("0. 프로그램 종료");
 			System.out.println("메뉴 번호 선택 : ");
@@ -98,7 +99,8 @@ public class PlayMenu {
 			case 1 : break;
 			case 2 : break;
 			case 3 : cMenu.conMenu(); break;
-			case 4 : break;
+			case 4 : rm.reviewAdminMenu();
+				break;
 			case 9 : mainMenu(); break;
 			case 0 : System.out.println("프로그램 종료"); System.exit(0);
 			default :
