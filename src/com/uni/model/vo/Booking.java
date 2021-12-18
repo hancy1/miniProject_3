@@ -1,6 +1,8 @@
-package uni.model.vo;
+package com.uni.model.vo;
 
-public class Booking {
+import java.io.Serializable;
+
+public class Booking implements Serializable {
 	// 놀이기구 이름, 시간대, 인원 수, 혼잡도
 	private String attraction;
 	private String time;
@@ -8,14 +10,17 @@ public class Booking {
 	private String cong; // 1: 쾌적, 2: 보통, 3: 복잡
 	private int num;
 
-	public Booking(String attraction, String time, int count, int num) {
+	public Booking()  {
+
+	}
+
+	public Booking(String attraction, String time, int count) { //booking에서 쓰이는 객체
 		this.attraction = attraction;
 		this.time = time;
 		this.count = count;
-		this.num = num;
 	}
 
-	public Booking(String attraction, String cong) {
+	public Booking(String attraction, String cong) { //혼잡도, 운행시간에서 쓰이는 객체
 		super();
 		this.attraction = attraction;
 		this.cong = cong;
@@ -63,7 +68,7 @@ public class Booking {
 
 	@Override
 	public String toString() {
-		return "선택하신 놀이기구는 " + attraction + "이고, 예약시간은 " + time + "입니다. 예약인원은 " + count + "명입니다.";
+		return "선택하신 놀이기구는 " + attraction + "이고, 예약시간은 " + time + "입니다. 예약인원은 " + count + "명입니다.\n";
 	}
 
 }
