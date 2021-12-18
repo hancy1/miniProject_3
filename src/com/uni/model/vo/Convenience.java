@@ -1,9 +1,9 @@
-package com.convenience.user.model.vo;
+package com.uni.model.vo;
 
 public class Convenience {
 	
 	private int cNo; //편의시설 넘버(카운팅 형식으로)
-	private int con; //편의시설(1.안내데스크, 2.화장실)
+	private String con; //편의시설(1.안내데스크, 2.화장실)
 	private char area; //구역(A,B,C,D)
 	private String position; //위치
 	
@@ -16,7 +16,7 @@ public class Convenience {
 
 	
 	//매개변수 생성자
-	public Convenience(int cNo, int con, char area, String position) {
+	public Convenience(int cNo, String con, char area, String position) {
 		super();
 		this.cNo = cNo;
 		this.con = con;
@@ -36,12 +36,12 @@ public class Convenience {
 	}
 
 	
-	public int getCon() {
+	public String getCon() {
 		return con;
 	}
 
 
-	public void setCon(int con) {
+	public void setCon(String con) {
 		this.con = con;
 	}
 
@@ -69,39 +69,21 @@ public class Convenience {
 
 	@Override
 	public String toString() {
-		
+		/*
 		String con2 = "";
 		
 		if(con == 1) {
 			con2 = "안내데스크";
 		} else if(con == 2) {
 			con2 = "화장실";
-		}
+		}*/
 		
-		return area + "구역에는 " + position + "에 " + con2 + "가(이) 위치하고 있습니다.";
+		//return area + "구역에는 " + position + "에 " + con2 + "가(이) 위치하고 있습니다.";
+	
+		return area + "구역에는 " + position + "에 " + con + "가(이) 위치하고 있습니다.";
+
+	
 	}
-	
-	
-	
-
-	
-	
-
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 	
 	
 
