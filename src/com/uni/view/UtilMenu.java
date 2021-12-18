@@ -11,7 +11,7 @@ public class UtilMenu {
 	private Scanner sc = new Scanner(System.in);
 	// private Cong_time ct = new Cong_time();
 	// private BookingMenu bm = new BookingMenu();
-	private BookingMenu2 bm = new BookingMenu2();
+	//private BookingMenu2 bm = new BookingMenu2();
 	private BookingController bc = new BookingController();
 	private Cong_timeController ct = new Cong_timeController();
 	private Booking bk = new Booking();
