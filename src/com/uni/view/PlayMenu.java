@@ -5,12 +5,9 @@ import java.util.Scanner;
 
 import com.uni.controller.ConManager;
 import com.uni.controller.WorldController;
-import com.uni.model.vo.Admin;
 
 
 public class PlayMenu {
-	
-	Scanner sc = new Scanner(System.in);
 
 
 	public PlayMenu() {
