@@ -42,4 +42,5 @@ public class Bus {
 	public void displayBusInfo() {
 		System.out.println( "버스 번호:" + busNo + ", ac:" + ac + ", 총인원 :" + capacity );
 	}
+	
 }
