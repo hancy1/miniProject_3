@@ -1,7 +1,5 @@
 package com.uni.run;
 
-
-import com.uni.view.GuideAmuseMenu;
 import com.uni.view.PlayMenu;
 
 public class RunA {

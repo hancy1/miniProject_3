@@ -25,10 +25,6 @@ public class PlayMenu {
 	ReviewMenu rm = new ReviewMenu();
 	PlayAmuseMenu pm = new PlayAmuseMenu();
 	GuideAmuseMenu gm = new GuideAmuseMenu();
-	
-	
-	
-
 
 	public void mainMenu() {
 		while(true) {
