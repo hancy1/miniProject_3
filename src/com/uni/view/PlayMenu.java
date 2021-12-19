@@ -23,7 +23,7 @@ public class PlayMenu {
 	ConManager cm = new ConManager();
 	ConMenu cMenu = new ConMenu();
 	ReviewMenu rm = new ReviewMenu();
-	PlayAmuseMenu pm = new PlayAmuseMenu();
+	UtilMenu ut = new UtilMenu();
 	GuideAmuseMenu gm = new GuideAmuseMenu();
 
 	public void mainMenu() {
@@ -45,7 +45,7 @@ public class PlayMenu {
 
 			switch(menu) {
 			case 1 : break;
-			case 2 : pm.mainMenu(); break;
+			case 2 : ut.util(); break;
 			case 3 : cm.conInfo(); break;
 			case 4 : ReviewMenu rm = new ReviewMenu();
 			 rm.mainMenu();
@@ -59,9 +59,6 @@ public class PlayMenu {
 			}
 		}
 	}
-	
-	
-	
 	
 	//관리자 메뉴
 	public void managerMenu() {

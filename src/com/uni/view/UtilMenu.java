@@ -1,20 +1,22 @@
 package com.uni.view;
 
 import java.util.Scanner;
-
 import com.uni.controller.BookingController;
 import com.uni.controller.Cong_timeController;
+import com.uni.controller.GuideAmuseMenuController;
 import com.uni.model.vo.Booking;
 
 public class UtilMenu {
 
 	private Scanner sc = new Scanner(System.in);
-	// private Cong_time ct = new Cong_time();
-	// private BookingMenu bm = new BookingMenu();
-	//private BookingMenu2 bm = new BookingMenu2();
 	private BookingController bc = new BookingController();
 	private Cong_timeController ct = new Cong_timeController();
 	private Booking bk = new Booking();
+	private GuideAmuseMenuController gc = new GuideAmuseMenuController();
+	// private Cong_time ct = new Cong_time(); //나중에 삭제할 코드
+		// private BookingMenu bm = new BookingMenu();
+		//private BookingMenu2 bm = new BookingMenu2();
+	
 
 	public UtilMenu() {
 
@@ -36,7 +38,8 @@ public class UtilMenu {
 				congestion();
 				break;
 			case 2:
-				// 이용 제한 요건 조회
+				System.out.println("<놀이기구 이용 조건>");
+				gc.displayAllList();
 				break;
 			case 3:
 				operatingTime();
