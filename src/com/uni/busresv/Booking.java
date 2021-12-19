@@ -37,10 +37,7 @@ public class Booking {
 			if(b.busNo == busNo && b.date.equals(date)) {
 				booked++;
 			}
-		}
-		
-		return booked<capacity?true:false;
-		
+		}		
+		return booked<capacity?true:false;	
 	}
-
 }

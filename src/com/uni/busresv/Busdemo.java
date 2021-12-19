@@ -118,7 +118,6 @@ public class Busdemo {
 	    	break;		
 		
 		}		
-			
 		
 	}
 	private static void printWeekSchedule1() {
