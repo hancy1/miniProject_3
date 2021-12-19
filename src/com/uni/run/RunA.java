@@ -1,6 +1,7 @@
 package com.uni.run;
 
 
+import com.uni.view.GuideAmuseMenu;
 import com.uni.view.PlayMenu;
 
 public class RunA {
@@ -9,7 +10,6 @@ public class RunA {
 		
 		PlayMenu pm = new PlayMenu();
 		pm.mainMenu();
-		
 		
 	}
 
