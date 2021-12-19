@@ -80,7 +80,7 @@ public class Review implements Serializable{
 	@Override
 	public String toString() {
 		return "이용후기 [No." + reviewNo + ", 제목 : " + reviewTitle + ", 등록날짜 : " + reviewDate
-				+ ", 내용 : " + reviewContent + ", 비밀번호 : " +  pwd + "]";
+				+ ", 내용 : " + reviewContent + "]";
 	}
 
 	

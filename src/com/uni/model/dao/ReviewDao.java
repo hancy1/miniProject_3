@@ -9,17 +9,19 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.regex.Pattern;
 
+import com.uni.model.vo.BookTicket;
 import com.uni.model.vo.Review;
-import com.uni.model.vo.ReviewAdmin;
 
 public class ReviewDao {
 
 	ArrayList<Review> reviewList = new ArrayList<Review>();
-	ArrayList<ReviewAdmin> reviewAdminList = new ArrayList<ReviewAdmin>();
+	ArrayList<BookTicket> bookList = new ArrayList<BookTicket>();
+	
+	
 	// vo클래스 자료형을 임시로 저장할 컬렉션(ArrayList)
 
 	public ReviewDao() {
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Review_Admin.txt")))
+		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Review.txt")))
 		{	reviewList.addAll((ArrayList<Review>)ois.readObject()); 
 			//reviewList.addAll((ArrayList<Review>)ois.readObject()); //addAll메소드를 이용해 reviewList 통으로 추가, 파일에 있는 객체들을 reviewList에 다 담는다.
 		} catch (ClassNotFoundException e) {
@@ -32,20 +34,16 @@ public class ReviewDao {
 			e.printStackTrace();
 		}
 		
-		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Review_Admin.txt")))
-		{	//reviewAdminList.addAll((ArrayList<ReviewAdmin>)ois.readObject()); 
-			reviewAdminList.addAll((ArrayList<ReviewAdmin>)ois.readObject()); //addAll메소드를 이용해 reviewList 통으로 추가, 파일에 있는 객체들을 reviewList에 다 담는다.
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();			
-		} catch (FileNotFoundException e) {
-			System.out.println("등록된 글이 없습니다.");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		
 	}
 
+	public int checkPwd(String pwd) { // 비밀번호 숫자4자리인지 체크하는 메소드
+		if (Pattern.compile("[0~9]") != null && pwd.length() == 4) {
+			return 1;
+		}else {
+			return 0;}
+
+	}
 
 	public int getLastReviewNo() { // 글번호 얻어오기
 
@@ -60,6 +58,24 @@ public class ReviewDao {
 	}
 
 
+	public void saveListFile() { // txt에 저장
+
+		try(ObjectOutputStream oos = new ObjectOutputStream
+				(new FileOutputStream("Review.txt"))){
+			//System.out.println(reviewList); // 글 등록 후 모든 글이 출력됨
+			oos.writeObject(reviewList); // 사용자용
+			//oos.writeObject(reviewAdminList); // 관리자용
+
+			
+		}catch(FileNotFoundException e) {
+			System.out.println("파일을 찾을 수 없습니다.");
+		}catch(IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+	
+	
 	public ArrayList<Review> readAllReview() { //1. 사용자 글 조회
 
 		return reviewList;
@@ -73,7 +89,7 @@ public class ReviewDao {
 		for(int i = 0; i < reviewList.size(); i++) {
 			if(reviewList.get(i).getReviewNo() == reviewNo) {
 				review = reviewList.get(i);
-				break;
+				
 			}
 		}
 
@@ -92,6 +108,17 @@ public class ReviewDao {
 		
 	}
 
+	public Review rightPwd(Review r, String pwd) { // 수정,삭제시 비밀번호가 맞는 확인
+
+		Review review = null;
+
+		
+		if(r.getPwd().equals(pwd)) {
+			review = r;
+		}else {review = null;}
+
+		return review;
+	}
 
 	public void deleteReview(int reviewNo) { // 4. 글 삭제
 
@@ -107,60 +134,18 @@ public class ReviewDao {
 	}
 
 
-	public void saveListFile() { // txt에 저장
-
-		try(ObjectOutputStream oos = new ObjectOutputStream
-				(new FileOutputStream("Review_Admin.txt"))){
-			//System.out.println(reviewList); // 글 등록 후 모든 글이 출력됨
-			oos.writeObject(reviewList); // 사용자용
-			oos.writeObject(reviewAdminList); // 관리자용
-
-			
-		}catch(FileNotFoundException e) {
-			System.out.println("파일을 찾을 수 없습니다.");
-		}catch(IOException e) {
-			e.printStackTrace();
-		}
-
-	}
+	
+	
 
 
-	public void writeAdminReview(ReviewAdmin reviewAdmin) { // 관리자 글등록
-
-		reviewAdminList.add(reviewAdmin);
-
-	}
+	
 
 
-	public int checkPwd(String pwd) { // 비밀번호 숫자4자리인지 체크하는 메소드
-		if (Pattern.compile("[0~9]") != null && pwd.length() == 4) {
-			return 1;
-		}else {
-			return 0;}
-
-	}
-
-
-	public Review rightPwd(String pwd) { // 수정,삭제시 비밀번호가 맞는 확인
-
-		Review review = null;
-
-		for(int i = 0; i < reviewList.size(); i++) {
-			if(reviewList.get(i).getPwd().equals(pwd)) {
-				review = reviewList.get(i);
-				break;
-			}
-		}
-
-		return review;
-	}
 	
 	
 	
-	public ArrayList<ReviewAdmin> readAdminAllReview() { // 관리자용 읽기
-
-		return reviewAdminList;
-	}
+	
+	
 
 }
 

@@ -2,6 +2,7 @@ package com.uni.view;
 
 import java.util.Scanner;
 
+import com.uni.controller.BookTicketManager;
 import com.uni.controller.ConManager;
 import com.uni.controller.WorldController;
 
@@ -25,7 +26,8 @@ public class PlayMenu {
 	ReviewMenu rm = new ReviewMenu();
 	UtilMenu ut = new UtilMenu();
 	GuideAmuseMenu gm = new GuideAmuseMenu();
-
+	BookTicketManager btm = new BookTicketManager();
+	
 	public void mainMenu() {
 		while(true) {
 
@@ -44,11 +46,10 @@ public class PlayMenu {
 
 
 			switch(menu) {
-			case 1 : break;
+			case 1 : btm.bookTicket(); break;
 			case 2 : ut.util(); break;
 			case 3 : cm.conInfo(); break;
-			case 4 : ReviewMenu rm = new ReviewMenu();
-			 rm.mainMenu();
+			case 4 : rm.mainMenu(); break;			 
 			case 5 : break;
 			case 6 : managerMenu(); break;
 			case 0 : System.out.println("프로그램 종료");return;
@@ -94,8 +95,7 @@ public class PlayMenu {
 			case 1 : break;
 			case 2 : gm.mainMenu(); break;
 			case 3 : cMenu.conMenu(); break;
-			case 4 : rm.reviewAdminMenu();
-				break;
+			case 4 : rm.reviewAdminMenu(); break;				
 			case 9 : mainMenu(); break;
 			case 0 : System.out.println("프로그램 종료"); System.exit(0);
 			default :
