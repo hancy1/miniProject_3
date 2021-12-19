@@ -1,10 +1,12 @@
 package com.uni.model.vo;
 
-public class Convenience {
+import java.io.Serializable;
+
+public class Convenience implements Serializable{
 	
 	private int cNo; //편의시설 넘버(카운팅 형식으로)
-	private String con; //편의시설(1.안내데스크, 2.화장실)
-	private char area; //구역(A,B,C,D)
+	private String con; //편의시설
+	private String area; //구역(A,B,C,D,정문)
 	private String position; //위치
 	
 	
@@ -16,7 +18,7 @@ public class Convenience {
 
 	
 	//매개변수 생성자
-	public Convenience(int cNo, String con, char area, String position) {
+	public Convenience(int cNo, String con, String area, String position) {
 		super();
 		this.cNo = cNo;
 		this.con = con;
@@ -46,12 +48,12 @@ public class Convenience {
 	}
 
 
-	public char getArea() {
+	public String getArea() {
 		return area;
 	}
 
 
-	public void setArea(char area) {
+	public void setArea(String area) {
 		this.area = area;
 	}
 
@@ -69,18 +71,9 @@ public class Convenience {
 
 	@Override
 	public String toString() {
-		/*
-		String con2 = "";
 		
-		if(con == 1) {
-			con2 = "안내데스크";
-		} else if(con == 2) {
-			con2 = "화장실";
-		}*/
 		
-		//return area + "구역에는 " + position + "에 " + con2 + "가(이) 위치하고 있습니다.";
-	
-		return area + "구역에는 " + position + "에 " + con + "가(이) 위치하고 있습니다.";
+		return cNo + ". " + area + "구역 " + con + "은(는) " + position + "에 위치하고 있습니다.";
 
 	
 	}
