@@ -118,7 +118,6 @@ public class Busdemo {
 	    	break;		
 		
 		}		
-	   
 	}
 	private static void printWeekSchedule1() {
 		System.out.println("평일 cc 역에서 자바월드까지 가는 셔틀버스");
