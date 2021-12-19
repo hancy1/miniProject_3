@@ -40,5 +40,4 @@ public class Booking {
 		}		
 		return booked<capacity?true:false;	
 	}
-	
 }
