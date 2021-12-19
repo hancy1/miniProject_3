@@ -30,7 +30,7 @@ public class GuideAmuseMenuController {
 		char amuseParent = sc.nextLine().charAt(0);
 
 		// ad.writeGuideAmuse 로 입력 받은 값 전달
-		ad.writeGuideAmuse(new GuideAmuse(amuseName, amuseAge, amuseHeight, amuseParent));
+//		ad.writeGuideAmuse(new GuideAmuse(amuseName, amuseAge, amuseHeight, amuseParent));
 		ad.saveGuideAmuse(); // 파일에 저장 
 
 	}
