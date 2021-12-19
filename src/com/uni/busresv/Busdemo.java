@@ -1,4 +1,4 @@
-package busresv;
+package com.uni.busresv;
 
 import java.util.Scanner;
 import java.util.ArrayList;

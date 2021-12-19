@@ -1,4 +1,4 @@
-package busresv;
+package com.uni.busresv;
 
 public class Bus {
 	private int busNo;
