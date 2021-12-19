@@ -23,6 +23,8 @@ public class PlayMenu {
 	ConManager cm = new ConManager();
 	ConMenu cMenu = new ConMenu();
 	ReviewMenu rm = new ReviewMenu();
+	PlayAmuseMenu pm = new PlayAmuseMenu();
+	GuideAmuseMenu gm = new GuideAmuseMenu();
 	
 	
 	
@@ -47,7 +49,7 @@ public class PlayMenu {
 
 			switch(menu) {
 			case 1 : break;
-			case 2 : break;
+			case 2 : pm.mainMenu(); break;
 			case 3 : cm.conInfo(); break;
 			case 4 : ReviewMenu rm = new ReviewMenu();
 			 rm.mainMenu();
@@ -97,7 +99,7 @@ public class PlayMenu {
 
 			switch(menu) {
 			case 1 : break;
-			case 2 : break;
+			case 2 : gm.mainMenu(); break;
 			case 3 : cMenu.conMenu(); break;
 			case 4 : rm.reviewAdminMenu();
 				break;

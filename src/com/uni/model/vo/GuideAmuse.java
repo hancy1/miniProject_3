@@ -1,7 +1,14 @@
 package com.uni.model.vo;
 
-public class GuideAmuse {
+import java.io.Serializable;
 
+public class GuideAmuse implements Serializable { // 직렬화
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2580057991442467937L;
+	
 	private String amuseName; // 놀이기구 이름 
 	private int amuseAge; // 놀이기구 이용 나이 
 	private double amuseHeight; // 놀이기구 이용 키 
@@ -53,8 +60,8 @@ public class GuideAmuse {
 
 	@Override
 	public String toString() {
-		return "GuideAmuse [amuseName=" + amuseName + ", amuseAge=" + amuseAge + ", amuseHeight=" + amuseHeight
-				+ ", amuseParent=" + amuseParent + "]";
+		return amuseName + " = 나이 : " + amuseAge + "세 이상, 키 : " + amuseHeight
+				+ "cm 이상, 보호자 동반 여부 : " + amuseParent;
 	}
 
 }

@@ -3,7 +3,6 @@ package com.uni.view;
 import java.util.Scanner;
 
 import com.uni.controller.GuideAmuseMenuController;
-import com.uni.model.vo.GuideAmuse;
 
 public class GuideAmuseMenu {
 
@@ -24,15 +23,17 @@ public class GuideAmuseMenu {
 
 			switch (menu) {
 			case 1:
-				insertGuideAmusement();
+				gc.insertGuideAmusement();
 				break;
 			case 2:
-				modifyGuideAmusement();
+				gc.modifyGuideAmusement();
 				break;
 			case 3:
+				System.out.println("<놀이기구 이용 제한 전체 조회>");
+				gc.displayAllList();
 				break;
 			case 9:
-				break;
+				return;
 			case 0:
 				System.out.println("프로그램 종료");
 				return;
@@ -41,46 +42,6 @@ public class GuideAmuseMenu {
 				break;
 			}
 		}
-	}
-
-	private void insertGuideAmusement() { // 메인메뉴 --> 6.관리자페이지 --> 2.이용 제한 관리 --> 1.이용 제한 등록
-
-		System.out.println("놀이기구 이름");
-		String amuseName = sc.nextLine();
-
-		System.out.println("나이 제한 (숫자만 입력) : ");
-		int amuseAge = sc.nextInt();
-
-		System.out.println("키 제한 (숫자만 입력) : ");
-		double amuseHeight = sc.nextDouble();
-		sc.nextLine();
-
-		System.out.println("보호자 동반 (y / n) : ");
-		char amuseParent = sc.nextLine().charAt(0);
-
-		GuideAmuse a = new GuideAmuse(amuseName, amuseAge, amuseHeight, amuseParent); // 입력 받은 자료를 a 에 담고
-		gc.insertGuideAmusement(a); // 컨트롤러 메서드로 전달
-
-	}
-
-	private void modifyGuideAmusement() { // 메인메뉴 --> 6.관리자페이지 --> 2.이용 제한 관리 --> 2.이용 제한 수정
-
-		System.out.println("놀이기구 이름");
-		String amuseName = sc.nextLine();
-
-		System.out.println("나이 제한 (숫자만 입력) : ");
-		int amuseAge = sc.nextInt();
-
-		System.out.println("키 제한 (숫자만 입력) : ");
-		double amuseHeight = sc.nextDouble();
-		sc.nextLine();
-
-		System.out.println("보호자 동반 (y / n) : ");
-		char amuseParent = sc.nextLine().charAt(0);
-
-		GuideAmuse b = new GuideAmuse(amuseName, amuseAge, amuseHeight, amuseParent); // 입력 받은 자료를 a 에 담고
-		gc.modifytGuideAmusement(b); // 컨트롤러 메서드로 전달
-
 	}
 
 }
