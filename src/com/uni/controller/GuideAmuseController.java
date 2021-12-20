@@ -66,9 +66,7 @@ public class GuideAmuseController {
 
 				break;
 
-			} else {
-				System.out.println("입력 받은 놀이기구가 존재하지 않습니다. 새로 등록해주세요.");
-			}
+			} 
 
 		}
 
@@ -102,9 +100,7 @@ public class GuideAmuseController {
 				System.out.println(amuseName + " 놀이기구 이용 제한 삭제 완료되었습니다.");
 				break;
 
-			} else if (!(ad.displayAllList().get(i).getAmuseName().equals(amuseName))) {
-				System.out.println("입력 받은 놀이기구가 존재하지 않습니다. 새로 등록해주세요.");
-			}
+			} 
 
 		}
 

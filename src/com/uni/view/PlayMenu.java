@@ -14,6 +14,7 @@ public class PlayMenu {
 	UtilMenu ut = new UtilMenu();
 	ConManager cm = new ConManager();
 	ReviewMenu rm = new ReviewMenu();
+	GuideAmuseMenu gm = new GuideAmuseMenu();
 	
 	//편의시설 관리 메뉴
 	ConMenu cMenu = new ConMenu();
@@ -105,7 +106,7 @@ public class PlayMenu {
 			case 1:
 				break;
 			case 2:
-				//gm.mainMenu();
+				gm.mainMenu();
 				break;
 			case 3:
 				cMenu.conMenu();
