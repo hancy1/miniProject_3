@@ -5,6 +5,8 @@ import java.util.Scanner;
 public class PlayMenu {
 
 	Scanner sc = new Scanner(System.in);
+	UtilMenu ut = new UtilMenu();
+	
 
 	public PlayMenu() {
 
@@ -30,7 +32,7 @@ public class PlayMenu {
 				//btm.bookTicket();
 				break;
 			case 2:
-				//ut.util();
+				ut.util();
 				break;
 			case 3:
 				//cm.conInfo();
