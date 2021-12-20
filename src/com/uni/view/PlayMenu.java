@@ -2,36 +2,17 @@ package com.uni.view;
 
 import java.util.Scanner;
 
-import com.uni.controller.BookTicketManager;
-import com.uni.controller.ConManager;
-import com.uni.controller.WorldController;
-
-
 public class PlayMenu {
 
+	Scanner sc = new Scanner(System.in);
 
 	public PlayMenu() {
-		// TODO Auto-generated constructor stub
-	}
-	
-	
-	
-	Scanner sc = new Scanner(System.in);
-	
-	WorldController wc = new WorldController();
-	
-	//편의시설 필요한 부분 객체 생성
-	ConManager cm = new ConManager();
-	ConMenu cMenu = new ConMenu();
-	ReviewMenu rm = new ReviewMenu();
-	UtilMenu ut = new UtilMenu();
-	GuideAmuseMenu gm = new GuideAmuseMenu();
-	BookTicketManager btm = new BookTicketManager();
-	
-	public void mainMenu() {
-		while(true) {
 
-	
+	}
+
+	public void mainMenu() {
+		while (true) {
+
 			System.out.println("*** Hello Java World! ***");
 			System.out.println("1. 이용권 예매");
 			System.out.println("2. 놀이기구 이용");
@@ -44,41 +25,54 @@ public class PlayMenu {
 			int menu = sc.nextInt();
 			sc.nextLine();
 
-
-			switch(menu) {
-			case 1 : btm.bookTicket(); break;
-			case 2 : ut.util(); break;
-			case 3 : cm.conInfo(); break;
-			case 4 : rm.mainMenu(); break;			 
-			case 5 : break;
-			case 6 : managerMenu(); break;
-			case 0 : System.out.println("프로그램 종료");return;
-			default :
+			switch (menu) {
+			case 1:
+				//btm.bookTicket();
+				break;
+			case 2:
+				//ut.util();
+				break;
+			case 3:
+				//cm.conInfo();
+				break;
+			case 4:
+				//rm.mainMenu();
+				break;
+			case 5:
+				break;
+			case 6:
+				managerMenu();
+				break;
+			case 0:
+				System.out.println("프로그램 종료");
+				return;
+			default:
 				System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
 				break;
 
 			}
 		}
 	}
-	
-	//관리자 메뉴
+
+	// 관리자 메뉴
 	public void managerMenu() {
-		
-		//System.exit(0); //프로그램 강제 종료 시키기
-		//아이디, 패스워드 입력 받아 일치해야 넘어가도록
+
+		// System.exit(0); //프로그램 강제 종료 시키기
+		// 아이디, 패스워드 입력 받아 일치해야 넘어가도록
 		System.out.println();
 		System.out.println("*** 관리자 전용 로그인 ***");
 		System.out.println("아이디를 입력하세요 : ");
 		String id = sc.nextLine();
-		
+
 		System.out.println("비밀번호를 입력하세요 : ");
 		String pwd = sc.nextLine();
-		
-		//아이디, 패스워드 Manager의 login으로 전달
-		int result = wc.login(id, pwd);
-		
-		//일치하는 경우
-		while(result == 1) {
+
+		// 아이디, 패스워드 Manager의 login으로 전달
+		//int result = wc.login(id, pwd);
+		int result = 0; //위에 result설정한 부분이 오류나서 임의로 만든 변수. wc 만들면 삭제하기
+
+		// 일치하는 경우
+		while (result == 1) {
 			System.out.println();
 			System.out.println("*** 관리자 메뉴 ***");
 			System.out.println("1. 셔틀버스 시간표 관리");
@@ -91,26 +85,37 @@ public class PlayMenu {
 			int menu = sc.nextInt();
 			sc.nextLine();
 
-			switch(menu) {
-			case 1 : break;
-			case 2 : gm.mainMenu(); break;
-			case 3 : cMenu.conMenu(); break;
-			case 4 : rm.reviewAdminMenu(); break;				
-			case 9 : mainMenu(); break;
-			case 0 : System.out.println("프로그램 종료"); System.exit(0);
-			default :
+			switch (menu) {
+			case 1:
+				break;
+			case 2:
+				//gm.mainMenu();
+				break;
+			case 3:
+				//cMenu.conMenu();
+				break;
+			case 4:
+				//rm.reviewAdminMenu();
+				break;
+			case 9:
+				System.out.println("이전 메뉴로 이동합니다.");
+				mainMenu();
+				break;
+			case 0:
+				System.out.println("프로그램 종료");
+				System.exit(0);
+			default:
 				System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
 				break;
-		
+
 			}
-	
+
 		}
-		//둘 중 하나라도 일치하지 않으면 메인메뉴로 돌아가기
+		// 둘 중 하나라도 일치하지 않으면 메인메뉴로 돌아가기
 		System.out.println("아이디 또는 비밀번호가 일치하지 않아 메뉴로 돌아갑니다.");
 		System.out.println();
 		mainMenu();
-		
-	}
-	
-}
 
+	}
+
+}
