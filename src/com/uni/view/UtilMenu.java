@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 import com.uni.controller.BookingController;
 import com.uni.controller.Cong_timeController;
+import com.uni.controller.GuideAmuseController;
+import com.uni.controller.GuideAmuseMenuController;
 import com.uni.model.vo.Booking;
 
 public class UtilMenu {
@@ -11,6 +13,7 @@ public class UtilMenu {
 	private Scanner sc = new Scanner(System.in);	
 	private BookingController bc = new BookingController();
 	private Cong_timeController ct = new Cong_timeController();
+	private GuideAmuseController gc = new GuideAmuseController();
 
 	public UtilMenu() {
 
@@ -32,7 +35,8 @@ public class UtilMenu {
 				congestion();
 				break;
 			case 2:
-				// 이용 제한 요건 조회
+				System.out.println("===== 놀이기구 이용 조건 =====");
+				gc.displayAllList();
 				break;
 			case 3:
 				operatingTime();
