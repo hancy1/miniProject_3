@@ -54,7 +54,7 @@ public class GuideAmuse implements Serializable { // 직렬화
 		return amuseParent;
 	}
 
-	public void setAmuseParent(char amuseParent) {
+	public void setAmuseParent(char amusㄹeParent) {
 		this.amuseParent = amuseParent;
 	}
 

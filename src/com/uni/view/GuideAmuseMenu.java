@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import com.uni.controller.GuideAmuseMenuController;
 
-public class GuideAmuseMenu {
+public class GuideAmuseMenu { 
 
 	Scanner sc = new Scanner(System.in);
 	GuideAmuseMenuController gc = new GuideAmuseMenuController();

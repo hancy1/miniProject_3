@@ -89,7 +89,7 @@ public class GuideAmuseMenuController {
 		System.out.println("===== 놀이기구 이용 제한 삭제 =====");
 
 		// 입력
-		System.out.println("놀이기구 이름 : ");
+		System.out.println("놀이기구 이름 : "); 
 		String amuseName = sc.nextLine();
 
 		// 찾아서 불러오기

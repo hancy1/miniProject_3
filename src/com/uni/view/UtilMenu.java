@@ -128,7 +128,7 @@ public class UtilMenu {
 			System.out.println("2. 회전목마");
 			System.out.println("3. 범퍼카");
 			System.out.println("4. 롤러코스터");
-			System.out.println("9. 이전 메뉴로");
+			System.out.println("9. 이전메뉴로");
 			System.out.println("놀이기구를 선택해주세요: ");
 			int menu = sc.nextInt();
 

@@ -35,7 +35,7 @@ public class GuideAmuseDao {
 
 	public void writeGuideAmuse(GuideAmuse guideAmuse) { // 이용 제한 등록
 		// 입력받은 값 매개변수로 입력받아 리스트에 저장
-		list.add(guideAmuse);
+		list.add(guideAmuse); 
 	}
 
 	public ArrayList<GuideAmuse> displayAllList() { // 이용 제한 전체 조회
