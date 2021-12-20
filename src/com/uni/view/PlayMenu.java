@@ -2,10 +2,14 @@ package com.uni.view;
 
 import java.util.Scanner;
 
+import com.uni.controller.BookTicketManager;
+
 public class PlayMenu {
 
 	Scanner sc = new Scanner(System.in);
 	UtilMenu ut = new UtilMenu();
+	ReviewMenu rm = new ReviewMenu();
+	BookTicketManager btm = new BookTicketManager();
 	
 
 	public PlayMenu() {
@@ -29,7 +33,7 @@ public class PlayMenu {
 
 			switch (menu) {
 			case 1:
-				//btm.bookTicket();
+				btm.bookTicket();
 				break;
 			case 2:
 				ut.util();
@@ -38,7 +42,7 @@ public class PlayMenu {
 				//cm.conInfo();
 				break;
 			case 4:
-				//rm.mainMenu();
+				rm.mainMenu();
 				break;
 			case 5:
 				break;
@@ -97,7 +101,7 @@ public class PlayMenu {
 				//cMenu.conMenu();
 				break;
 			case 4:
-				//rm.reviewAdminMenu();
+				rm.mainMenu();
 				break;
 			case 9:
 				System.out.println("이전 메뉴로 이동합니다.");
