@@ -22,7 +22,7 @@ public class PlayMenu {
 	
 	//편의시설 필요한 부분 객체 생성
 	ConManager cm = new ConManager();
-	ConMenu cMenu = new ConMenu();
+//	ConMenu cMenu = new ConMenu(); ------------------------------------------------------- 오류로 임시 주석처리
 	ReviewMenu rm = new ReviewMenu();
 	UtilMenu ut = new UtilMenu();
 	GuideAmuseMenu gm = new GuideAmuseMenu();
@@ -94,7 +94,7 @@ public class PlayMenu {
 			switch(menu) {
 			case 1 : break;
 			case 2 : gm.mainMenu(); break;
-			case 3 : cMenu.conMenu(); break;
+//			case 3 : cMenu.conMenu(); break; ------------------------------------------------------- 오류로 임시 주석처리
 			case 4 : rm.reviewAdminMenu(); break;				
 			case 9 : mainMenu(); break;
 			case 0 : System.out.println("프로그램 종료"); System.exit(0);

@@ -38,7 +38,7 @@ public class UtilMenu {
 				congestion();
 				break;
 			case 2:
-				System.out.println("<놀이기구 이용 조건>");
+				System.out.println("===== 놀이기구 이용 조건 =====");
 				gc.displayAllList();
 				break;
 			case 3:

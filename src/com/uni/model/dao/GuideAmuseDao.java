@@ -1,11 +1,13 @@
 package com.uni.model.dao;
 
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
+import java.io.StreamCorruptedException;
 import java.util.ArrayList;
 
 import com.uni.model.vo.GuideAmuse;
@@ -14,7 +16,7 @@ public class GuideAmuseDao {
 
 	ArrayList<GuideAmuse> list = new ArrayList<GuideAmuse>(); // 어레이리스트 생성
 
-	public GuideAmuseDao() {
+	public GuideAmuseDao() {  
 
 		try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("guideAmuse_list.txt"))) {
 
@@ -37,6 +39,12 @@ public class GuideAmuseDao {
 	}
 
 	public ArrayList<GuideAmuse> displayAllList() { // 이용 제한 전체 조회
+		
+		// 리스트에 저장된 놀이기구가 없을 때 
+		if(list.isEmpty()) {
+			System.out.println("이용 제한 조건이 없습니다.");
+		}
+		
 		// 리스트에 저장한 값을 컨트롤러의 displayAllList 로 보내준다
 		return list;
 	}

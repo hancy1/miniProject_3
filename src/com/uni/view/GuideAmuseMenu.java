@@ -15,6 +15,7 @@ public class GuideAmuseMenu {
 			System.out.println("1. 이용 제한 등록");
 			System.out.println("2. 이용 제한 수정");
 			System.out.println("3. 이용 제한 전체 조회");
+			System.out.println("4. 이용 제한 삭제");
 			System.out.println("9. 이전 메뉴 ");
 			System.out.println("0. 프로그램 종료");
 			System.out.println("메뉴 번호 선택 : ");
@@ -29,8 +30,11 @@ public class GuideAmuseMenu {
 				gc.modifyGuideAmusement();
 				break;
 			case 3:
-				System.out.println("<놀이기구 이용 제한 전체 조회>");
+				System.out.println("===== 놀이기구 이용 제한 전체 조회 =====");
 				gc.displayAllList();
+				break;
+			case 4:
+				gc.deleteGuideAmusement();
 				break;
 			case 9:
 				return;
