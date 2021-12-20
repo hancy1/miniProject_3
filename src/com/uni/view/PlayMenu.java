@@ -3,13 +3,23 @@ package com.uni.view;
 import java.util.Scanner;
 
 import com.uni.controller.BookTicketManager;
+import com.uni.controller.ConManager;
+import com.uni.controller.WorldController;
 
 public class PlayMenu {
 
 	Scanner sc = new Scanner(System.in);
-	UtilMenu ut = new UtilMenu();
-	ReviewMenu rm = new ReviewMenu();
+	
 	BookTicketManager btm = new BookTicketManager();
+	UtilMenu ut = new UtilMenu();
+	ConManager cm = new ConManager();
+	ReviewMenu rm = new ReviewMenu();
+	
+	//편의시설 관리 메뉴
+	ConMenu cMenu = new ConMenu();
+	
+	//로그인 확인
+	WorldController wc = new WorldController();
 	
 
 	public PlayMenu() {
@@ -39,7 +49,7 @@ public class PlayMenu {
 				ut.util();
 				break;
 			case 3:
-				//cm.conInfo();
+				cm.conInfo();
 				break;
 			case 4:
 				rm.mainMenu();
@@ -74,8 +84,8 @@ public class PlayMenu {
 		String pwd = sc.nextLine();
 
 		// 아이디, 패스워드 Manager의 login으로 전달
-		//int result = wc.login(id, pwd);
-		int result = 0; //위에 result설정한 부분이 오류나서 임의로 만든 변수. wc 만들면 삭제하기
+		int result = wc.login(id, pwd);
+		//int result = 0; //위에 result설정한 부분이 오류나서 임의로 만든 변수. wc 만들면 삭제하기
 
 		// 일치하는 경우
 		while (result == 1) {
@@ -98,7 +108,7 @@ public class PlayMenu {
 				//gm.mainMenu();
 				break;
 			case 3:
-				//cMenu.conMenu();
+				cMenu.conMenu();
 				break;
 			case 4:
 				rm.mainMenu();
