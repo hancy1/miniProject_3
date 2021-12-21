@@ -291,6 +291,7 @@ public class ConManager {
 							cd.saveListFile();
 							System.out.println(no + "번 편의시설이 삭제되었습니다.");
 							return;
+							//break;
 						}
 			
 					} else {
@@ -308,6 +309,8 @@ public class ConManager {
 			continue;
 		
 			}
+			
+			return;
 		}
 
 	}
