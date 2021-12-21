@@ -192,7 +192,7 @@ public class ConDao {
 				saveListFile();
 				
 				
-				break;
+				return;
 			}
 		}
 		
