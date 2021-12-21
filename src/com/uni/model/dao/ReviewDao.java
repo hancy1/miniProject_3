@@ -40,8 +40,8 @@ public class ReviewDao {
 
 	}
 
-	public int checkPwd(String pwd) { // 비밀번호 숫자4자리인지 체크하는 메소드
-		if (Pattern.compile("[0~9]") != null && pwd.length() == 4) {
+	public int checkPwd(String pwd) { // 비밀번호 4자리인지 체크하는 메소드
+		if (pwd.length() == 4) {
 			return 1;
 		}else {
 			return 0;}
@@ -110,7 +110,7 @@ public class ReviewDao {
 
 	}
 
-	public Review rightPwd(Review r, String pwd) { // 수정,삭제시 비밀번호가 맞는 확인
+	public Review rightPwd(Review r, String pwd) { // 수정,삭제시 비밀번호가 맞는지 확인
 
 		Review review = null;
 
