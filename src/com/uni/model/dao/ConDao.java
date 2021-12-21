@@ -87,7 +87,7 @@ public class ConDao {
 			
 			//둘 다 일치하면 객체 출력
 			if(con.equals(list.get(i).getCon())
-					&& area.toUpperCase().equalsIgnoreCase(list.get(i).getArea())) {
+					&& area.equalsIgnoreCase(list.get(i).getArea())) {
 				
 					result = list.get(i);
 		
