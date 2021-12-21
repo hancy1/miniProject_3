@@ -28,7 +28,6 @@ public class BusTicketing  {
     		available[o]=60;
   		}
     
-    	
     	if(user.equals("333") && password.equals("333")){
     	
     		for(int x=1; x==1;){
