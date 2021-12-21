@@ -40,9 +40,7 @@ public class busBooking {
 		}
 		
 		return booked<capacity?true:false;
-		
+
 	}
 
-		
 	}
-

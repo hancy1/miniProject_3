@@ -11,13 +11,11 @@ public class Bus {
 		this.busNo = busNo;
 		this.ac = ac;
 		this.capacity = capacity;
-		
 	}
 
 	public int getBusNo() {
 		return busNo;
 	}
-
 	public void setBusNo(int busNo) {
 		this.busNo = busNo;
 	}
@@ -37,8 +35,6 @@ public class Bus {
 	public void setCapacity(int capacity) {
 		this.capacity = capacity;
 	}
-
-
 	public void displayBusInfo() {
 		System.out.println( "버스 번호:" + busNo + ", ac:" + ac + ", 총인원 :" + capacity );
 	}
