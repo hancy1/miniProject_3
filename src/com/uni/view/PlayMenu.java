@@ -1,9 +1,11 @@
 package com.uni.view;
 
+import java.io.IOException;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import com.uni.controller.BookTicketManager;
+import com.uni.controller.BusTicketing;
 import com.uni.controller.ConManager;
 import com.uni.controller.WorldController;
 
@@ -16,6 +18,7 @@ public class PlayMenu {
 	ConManager cm = new ConManager();
 	ReviewMenu rm = new ReviewMenu();
 	GuideAmuseMenu gm = new GuideAmuseMenu();
+	BusTicketing bt = new BusTicketing();
 	
 	//편의시설 관리 메뉴
 	ConMenu cMenu = new ConMenu();
@@ -60,6 +63,11 @@ public class PlayMenu {
 					rm.mainMenu();
 					break;
 				case 5:
+					try {
+						bt.busTicketing();
+					} catch (IOException e) {
+						e.printStackTrace();
+					}
 					break;
 				case 6:
 					managerMenu();
@@ -117,10 +125,9 @@ public class PlayMenu {
 					
 					System.out.println();
 					System.out.println("*** 관리자 메뉴 ***");
-					System.out.println("1. 셔틀버스 시간표 관리");
-					System.out.println("2. 놀이기구 이용제한 관리");
-					System.out.println("3. 편의시설 관리");
-					System.out.println("4. 이용 후기 관리");
+					System.out.println("1. 놀이기구 이용제한 관리");
+					System.out.println("2. 편의시설 관리");
+					System.out.println("3. 이용 후기 관리");
 					System.out.println("9. 이전 메뉴");
 					System.out.println("0. 프로그램 종료");
 					System.out.println("메뉴 번호 선택 : ");
@@ -129,15 +136,13 @@ public class PlayMenu {
 		
 					switch (menu) {
 					case 1:
+						gm.mainMenu();
 						break;
 					case 2:
-						//gm.mainMenu();
-						break;
-					case 3:
 						cMenu.conMenu();
 						break;
-					case 4:
-						rm.mainMenu();
+					case 3:
+						rm.reviewAdminMenu();
 						break;
 					case 9:
 						System.out.println("이전 메뉴로 이동합니다.");
