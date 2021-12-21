@@ -1,5 +1,6 @@
 package com.uni.model.dao;
 
+import java.io.EOFException;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -19,6 +20,8 @@ public class BookDao {
 		try(ObjectInputStream ois = new ObjectInputStream(new FileInputStream("Book.txt"))) 
 		{	bookList.addAll((ArrayList<BookTicket>)ois.readObject()); 
 		//addAll메소드를 이용해 reviewList 통으로 추가, 파일에 있는 객체들을 reviewList에 다 담는다.
+		} catch (EOFException e) {
+			
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();			

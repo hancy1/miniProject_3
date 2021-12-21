@@ -66,7 +66,7 @@ public class PlayMenu {
 					break;
 				case 0:
 					System.out.println("프로그램 종료");
-					return;
+					System.exit(0);
 				default:
 					System.out.println("잘못 입력하셨습니다. 다시 입력하세요.");
 					break;
