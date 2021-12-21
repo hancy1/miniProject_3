@@ -277,7 +277,6 @@ public class BusTicketing  {
 						}
 			            
 					}
-					
 					else if (choice.equals("4")){
 						
 						
