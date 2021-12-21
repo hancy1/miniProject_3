@@ -104,7 +104,7 @@ public class ConDao {
 	
 	
 	//편의시설 마지막 등록 번호 리턴
-	public int getLastBoardNo() {
+	public int getLastConNo() {
 		
 		//마지막 인덱스는 사이즈보다 하나 작음
 		return list.get(list.size()-1).getcNo();
