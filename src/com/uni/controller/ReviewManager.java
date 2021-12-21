@@ -44,10 +44,10 @@ public class ReviewManager {
 		Date today = new Date();
 		Date reviewDate = today;
 
-		System.out.println("수정/삭제를 위한 비밀번호 (숫자4자리): ");
+		System.out.println("수정/삭제를 위한 비밀번호 (4자리): ");
 		String pwd = sc.nextLine();
 
-		rd.checkPwd(pwd); // 비밀번호 조건 체크하는 메소드 숫자4자리
+		rd.checkPwd(pwd); // 비밀번호 조건 체크하는 메소드 4자리
 
 		if(rd.checkPwd(pwd) == 1) { // 1이면 조건적합, 0이면 조건 부적합
 			System.out.println("내용입력 (exit 입력시 내용입력 종료) : ");
@@ -74,7 +74,7 @@ public class ReviewManager {
 				rd.saveListFile();
 			}
 		}else {
-			System.out.println("비밀번호는 숫자 4자리 여야 합니다.");
+			System.out.println("비밀번호는 4자리 여야 합니다.");
 			return;
 		}
 
