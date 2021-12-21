@@ -166,7 +166,7 @@ public class Busdemo {
 		}
 		else
 			System.out.println("죄송합니다. 버스 좌석이 꽉찼습니다.");
-		
+			
 	}
 
 

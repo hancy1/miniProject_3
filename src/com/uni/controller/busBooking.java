@@ -2,6 +2,8 @@ package com.uni.controller;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
+
+import com.uni.model.vo.Bus;
 public class busBooking {
 	String passengerName;
 	int busNo;

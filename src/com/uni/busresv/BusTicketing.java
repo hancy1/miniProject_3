@@ -95,7 +95,7 @@ public class BusTicketing  {
     					
     					
     					
-    					//inputing of Passenger's Name//
+    					
     					else{
     					for(x=1; x==1;){
     						System.out.print("탑승객 이름: ");
