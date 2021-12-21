@@ -7,7 +7,7 @@ public class BusBooking {
 	int busNo;
 	Date date; 
 	
-	BusBooking(){
+	public BusBooking(){
 		Scanner sc = new Scanner(System.in);   
 		System.out.println("승객의 이름을 입력해주세요 : ") ;
 		passengerName = sc.next();
@@ -43,4 +43,6 @@ public class BusBooking {
 		
 	}
 
-}
+		
+	}
+

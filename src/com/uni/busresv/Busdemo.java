@@ -8,14 +8,12 @@ public class Busdemo {
 	public static void main(String[] args) {
 	
 		ArrayList<Bus> buses  = new ArrayList<Bus>();
-		ArrayList<BusBooking> bookings  = new ArrayList<BusBooking>();
-		int available[] = new int[2];
-		int ticketI[][] = new int [100][3];
-	    String ticketS[][] = new String[100][3];
-	    double ticketD[][] = new double [100][3];
+		ArrayList<busBooking> bookings  = new ArrayList<busBooking>();
+		
 		
 		buses.add(new Bus(1,true,45));
 		buses.add(new Bus(2,false,50));
+		
 		
 		
 		int userOpt = 1;
@@ -25,99 +23,42 @@ public class Busdemo {
 			b.displayBusInfo(); 
 		}
 		while(userOpt==1) {
-			System.out.println("********************************************");
-			System.out.println("** Java World shuttle bus ticketing  **");
-			System.out.println("********************************************");
 			System.out.println("== 자바월드 버스 예약 시스템==");
 			System.out.println("1. 버스 예약");
-			System.out.println("2. 버스 정거장 정보");
+			System.out.println("2. 버스 정거장 정보");		
 			System.out.println("9. 이전 메뉴 ");
 			System.out.println("0. 프로그램 종료 ");
 			System.out.println("번호를 입력해주세요 :");
-		
-			userOpt = sc.nextInt();
 			
+		
+			
+			
+			
+			
+			userOpt = sc.nextInt();
 			if(userOpt == 1) {
-				System.out.println("예약중..........");
 				System.out.println("== 자바월드 버스 예약 시스템==");
+				System.out.println("=====================");
 				System.out.println("1.평일 셔틀버스");
 				System.out.println("2.주말 셔틀버스");
-				System.out.println("9. 이전 메뉴 ");
+				System.out.println("9.이전 메뉴  ");
 				System.out.println("번호를 입력해주세요 :");
-				
 				int num = sc.nextInt();
 				
 				switch(num) {// 주말 버스 메뉴 번호
 			    case 1:
-			    	weekbus();
+			    	weekbusticket();
 			    	break;
 			    case 2:
-			    	weekendbus();
+			    	weekendbusticket();
 			    	break;
 			    case 9:
 			    	return;
 			    default :
 			    	System.out.println("번호를 잘못 입력하였습니다. 다시 입력해주세요");
 			    	break;
-				}
-				
-				
-			    	private static void weekendbus() {
-			    		Scanner sc = new Scanner(System.in);
-			    		System.out.println("  ");
-			    		System.out.println("==== 평일 셔틀버스 시간표 ====");
-			    		System.out.println("1. cc역 ---> 자바월드");
-			    		System.out.println("2. 자바월드 --> cc역");
-			    		System.out.println("9. 이전메뉴");
-			    		System.out.println("번호를 입력해주세요(숫자만 입력) : ");
-			    		System.out.print(">");
-			    	
-			    		int num = sc.nextInt();
-			    	switch(num) {
-				    case 1:
-				    	buycc();
-				    	break;
-				    case 2:
-				    	buyjava();
-				    	break;
-				    case 9:
-				    	return;
-				    default :
-				    	System.out.println("번호를 잘못 입력하였습니다. 다시 입력해주세요");
-				    	break;
 			    	}
-			    	
-			    	
-
-			    	private static void buycc() {
-						
-						
-					}
-
-			    	private static void buyjava() {
-						
-						
-					}
-					
-					private static void weekbus() {
-			    		
-			    		
-			    	}
-	
 				
-				
-				
-				
-				
-				
-				BusBooking booking  = new BusBooking();
-					if(booking.isAvailable(bookings,buses)) {
-						bookings.add(booking);
-						System.out.println("예약이 확인 되었습니다.");
-					}
-					else
-						System.out.println("죄송합니다. 버스 좌석이 꽉찼습니다.");
-			
 			}else if(userOpt == 2) {
 				System.out.println("버스 정거장 정보");
 				System.out.println("=====================");
@@ -125,6 +66,9 @@ public class Busdemo {
 				System.out.println("2.주말 셔틀버스 시간표 ");
 				System.out.println("9.이전 메뉴  ");
 				System.out.println("번호를 입력해주세요 :");
+			
+				
+			
 			}else if (userOpt == 9) {
 				System.out.println("이전메뉴로 돌아갑니다.");
 				System.out.println("=====================");
@@ -135,6 +79,8 @@ public class Busdemo {
 				break;
 			}
 				
+				
+			
 				int num = sc.nextInt();
 				
 				switch(num) {// 주말 버스 메뉴 번호
@@ -150,7 +96,7 @@ public class Busdemo {
 			    	System.out.println("번호를 잘못 입력하였습니다. 다시 입력해주세요");
 			    	break;
 			    	
-			    	
+				}
 				
 				
 			}
@@ -161,11 +107,124 @@ public class Busdemo {
 			
 			}
 			
-			
-		}
 
 	
 
+	private static void weekendbusticket() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("  ");
+		System.out.println("==== 주말 셔틀버스 예약 ====");
+		System.out.println("1. cc역 ---> 자바월드");
+		System.out.println("2. 자바월드 --> cc역");
+		System.out.println("9. 이전메뉴");
+		System.out.println("번호를 입력해주세요(숫자만 입력) : ");
+		System.out.print(">");
+		int num = sc.nextInt();
+		
+		
+	    switch(num) {
+	    case 1:
+	    	weekendcctitcket();
+	    	break;
+	    case 2:
+	    	weekendjavatitcket();
+	    	break;
+	    case 9:
+	    	return;
+	    default :
+	    	System.out.println("번호를 잘못 입력하였습니다. 다시 입력해주세요");
+	    	break;		
+	    }
+		}
+		
+	
+
+
+
+		private static void weekendjavatitcket() {
+			System.out.println("예약중..........");
+			System.out.println("=====================");
+				busBooking booking  = new busBooking();
+				if(booking.isAvailable(booking,buses)) {
+					busBooking.add(booking);s
+					System.out.println("예약이 확인 되었습니다.");
+			}
+			else
+				System.out.println("죄송합니다. 버스 좌석이 꽉찼습니다.");
+		
+	}
+
+
+
+	private static void weekendcctitcket() {
+		System.out.println("예약중..........");
+		System.out.println("=====================");
+			busBooking booking  = new busBooking();
+			if(booking.isAvailable(booking,buses)) {
+				busBooking.add(booking);
+				System.out.println("예약이 확인 되었습니다.");
+		}
+		else
+			System.out.println("죄송합니다. 버스 좌석이 꽉찼습니다.");
+		
+	}
+
+
+
+	private static void weekbusticket() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("  ");
+		System.out.println("==== 평일 셔틀버스 예약 ====");
+		System.out.println("1. cc역 ---> 자바월드");
+		System.out.println("2. 자바월드 --> cc역");
+		System.out.println("9. 이전메뉴");
+		System.out.println("번호를 입력해주세요(숫자만 입력) : ");
+		System.out.print(">");
+		int num = sc.nextInt();
+		
+		   switch(num) {
+		    case 1:
+		    	weekcctitcket();
+		    	break;
+		    case 2:
+		    	weekjavatitcket();
+		    	break;
+		    case 9:
+		    	return;
+		    default :
+		    	System.out.println("번호를 잘못 입력하였습니다. 다시 입력해주세요");
+		    	break;		
+		    }
+			}
+	private static void weekjavatitcket() {
+		System.out.println("예약중..........");
+		System.out.println("=====================");
+			busBooking booking  = new busBooking();
+			if(booking.isAvailable(booking,buses)) {
+				busBooking.add(booking);
+				System.out.println("예약이 확인 되었습니다.");
+		}
+		else
+			System.out.println("죄송합니다. 버스 좌석이 꽉찼습니다.");
+		
+	}
+
+
+
+
+	private static void weekcctitcket() {
+		System.out.println("예약중..........");
+		System.out.println("=====================");
+			busBooking booking  = new busBooking();
+			if(booking.isAvailable(booking,buses)) {
+				busBooking.add(booking);
+				System.out.println("예약이 확인 되었습니다.");
+		}
+		else
+			System.out.println("죄송합니다. 버스 좌석이 꽉찼습니다.");
+		
+	}
+	
 
 
 
@@ -183,7 +242,7 @@ public class Busdemo {
 		
 		int num = sc.nextInt();
 		
-	    switch(num) {// 평일 버스 메뉴 번호
+	    switch(num) {
 	    case 1:
 	    	printWeekSchedule1();
 	    	break;
@@ -195,9 +254,11 @@ public class Busdemo {
 	    default :
 	    	System.out.println("번호를 잘못 입력하였습니다. 다시 입력해주세요");
 	    	break;		
-		
+	    }
 		}		
-	}
+			
+		
+	
 	private static void printWeekSchedule1() {
 		System.out.println("평일 cc 역에서 자바월드까지 가는 셔틀버스");
 		System.out.println("=================================");
