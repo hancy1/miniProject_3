@@ -51,7 +51,7 @@ public class BusTicketing {
 							System.out.println(" 3.CC      | 10000 |   " + available[3]);
 							System.out.println(" 4.DD      | 10000 |   " + available[4]);
 							System.out.println("-------------------------------------");
-							System.out.println("가격 할인 기준: 어린이 & 노인 20% 활인\n");
+							System.out.println("가격 할인 기준: 어린이 & 노인 20% 할인\n");
 
 							System.out.println("*****************************************");
 							System.out.println("****       AA 정거장에서 Java 월드        ****");
@@ -78,7 +78,7 @@ public class BusTicketing {
 							System.out.println(" 3.CC      | 10000 |   " + available[3]);
 							System.out.println(" 4.DD      | 10000 |   " + available[4]);
 							System.out.println("-------------------------------------");
-							System.out.println("어린이 & 노인 20% 활인\n");
+							System.out.println("어린이 & 노인 20% 할인\n");
 
 							if ((available[1] == 0) && (available[2] == 0) && (available[3] == 0) && (available[4] == 0)
 									&& (available[5] == 0)) {
