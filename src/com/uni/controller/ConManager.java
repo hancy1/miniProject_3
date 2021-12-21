@@ -110,7 +110,7 @@ public class ConManager {
 					int no = 0; //여기서 초기화 해줘야 finally에서 가져다 쓸 수 있음
 					
 					try {
-						no = cd.getLastBoardNo();
+						no = cd.getLastConNo();
 
 					} catch(IndexOutOfBoundsException e) {
 						
