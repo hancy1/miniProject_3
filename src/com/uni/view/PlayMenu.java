@@ -15,6 +15,7 @@ public class PlayMenu {
 	UtilMenu ut = new UtilMenu();
 	ConManager cm = new ConManager();
 	ReviewMenu rm = new ReviewMenu();
+	GuideAmuseMenu gm = new GuideAmuseMenu();
 	
 	//편의시설 관리 메뉴
 	ConMenu cMenu = new ConMenu();
@@ -106,6 +107,7 @@ public class PlayMenu {
 		
 
 		// 일치하는 경우
+
 		if(result == true) {
 		
 			while (true) {
@@ -157,6 +159,7 @@ public class PlayMenu {
 					continue;
 				}
 		
+
 			}
 		}
 		// 둘 중 하나라도 일치하지 않으면 메인메뉴로 돌아가기
