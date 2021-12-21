@@ -110,7 +110,7 @@ public class ReviewDao {
 
 	}
 
-	public Review rightPwd(Review r, String pwd) { // 수정,삭제시 비밀번호가 맞는 확인
+	public Review rightPwd(Review r, String pwd) { // 수정,삭제시 비밀번호가 맞는지 확인
 
 		Review review = null;
 
