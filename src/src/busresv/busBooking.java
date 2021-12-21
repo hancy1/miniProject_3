@@ -1,13 +1,13 @@
-package com.uni.busresv;
+package busresv;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
-public class Booking {
+public class busBooking {
 	String passengerName;
 	int busNo;
 	Date date; 
 	
-	Booking(){
+	public busBooking(){
 		Scanner sc = new Scanner(System.in);   
 		System.out.println("승객의 이름을 입력해주세요 : ") ;
 		passengerName = sc.next();
@@ -25,7 +25,7 @@ public class Booking {
 		}
 	}
 
-	public boolean isAvailable(ArrayList<Booking> bookings, ArrayList<Bus> buses) {
+	public boolean isAvailable(ArrayList<busBooking> bookings, ArrayList<Bus> buses) {
 		int capacity = 0;
 		for(Bus bus:buses) {
 			if (bus.getBusNo() == busNo)
@@ -33,11 +33,16 @@ public class Booking {
 		}
 		
 		int booked = 0;
-		for(Booking b:bookings) {
+		for(busBooking b:bookings) {
 			if(b.busNo == busNo && b.date.equals(date)) {
 				booked++;
 			}
-		}		
-		return booked<capacity?true:false;	
+		}
+		
+		return booked<capacity?true:false;
+		
 	}
-}
+
+		
+	}
+
